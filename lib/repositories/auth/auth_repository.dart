@@ -17,7 +17,11 @@ class AuthRepository {
     });
   }
 
-  Future<void> register({required String email, required String password, required String displayName}) async {
+  Future<void> register({
+    required String email,
+    required String password,
+    required String displayName,
+  }) async {
     await await _firebaseAuth
         .createUserWithEmailAndPassword(
           email: email,
@@ -43,5 +47,6 @@ class AuthRepository {
 }
 
 extension on firebase_auth.User {
-  User get toUser => User(id: uid, email: email, name: displayName, photo: photoURL);
+  User get toUser =>
+      User(id: uid, email: email, name: displayName, photo: photoURL);
 }
