@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "407972679260",
+    "project_id": "twenty-x-eight",
+    "storage_bucket": "twenty-x-eight.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:407972679260:android:5d2e89655beebeebdde099",
+        "android_client_info": {
+          "package_name": "com.example.verygoodcore.twenty_eight"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "407972679260-uvhnqqlr3quqev7aqf4rj1auh33vsv2n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhzmCpUk6KC9mHevhim6SeKJzZXAZXsnY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "407972679260-uvhnqqlr3quqev7aqf4rj1auh33vsv2n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
