@@ -22,7 +22,8 @@ class AuthRepository {
     required String password,
     required String displayName,
   }) async {
-    await await _firebaseAuth
+    // ignore: unawaited_futures
+    await _firebaseAuth
         .createUserWithEmailAndPassword(
           email: email,
           password: password,
