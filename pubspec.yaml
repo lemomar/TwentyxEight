@@ -16,6 +16,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
+  flutter_hooks: ^0.18.5+1
   flutter_localizations:
     sdk: flutter
   google_fonts: ^3.0.1
