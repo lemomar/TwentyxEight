@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 
-import '../../models/user/user_model.dart';
+import '../../models/user/user.dart';
 
 class AuthRepository {
   AuthRepository({firebase_auth.FirebaseAuth? firebaseAuth})
@@ -22,13 +22,16 @@ class AuthRepository {
     required String password,
     required String displayName,
   }) async {
+    print({email, password, displayName});
     // ignore: unawaited_futures
     await _firebaseAuth
         .createUserWithEmailAndPassword(
           email: email,
           password: password,
         )
-        .then((_) => _firebaseAuth.currentUser?.updateDisplayName(displayName));
+        .then(
+          (_) => _firebaseAuth.currentUser?.updateDisplayName(displayName),
+        );
   }
 
   Future<void> login({required String email, required String password}) async {
@@ -48,6 +51,5 @@ class AuthRepository {
 }
 
 extension on firebase_auth.User {
-  User get toUser =>
-      User(id: uid, email: email, name: displayName, photo: photoURL);
+  User get toUser => User(id: uid, email: email, name: displayName, photo: photoURL);
 }

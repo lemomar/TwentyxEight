@@ -14,7 +14,7 @@ class BNavigationBar extends StatelessWidget {
     return SalomonBottomBar(
       currentIndex: state.value,
       onTap: (int index) => state.value = index,
-      // selectedItemColor: bottomBarSelectedColor,
+      selectedItemColor: Theme.of(context).colorScheme.primary,
       // unselectedItemColor: bottomBarSelectedColor.withOpacity(.4),
       items: [
         SalomonBottomBarItem(
@@ -24,10 +24,6 @@ class BNavigationBar extends StatelessWidget {
         SalomonBottomBarItem(
           title: const Text('Portfolio'),
           icon: const Icon(Icons.wallet),
-        ),
-        SalomonBottomBarItem(
-          title: const Text('Profile'),
-          icon: const Icon(Icons.person),
         ),
       ],
     );

@@ -1,5 +1,5 @@
 name: twenty_eight
-description: Your first step into pesonal finance.
+description: Your first step into personal finance.
 version: 0.0.4
 publish_to: none
 
@@ -22,12 +22,15 @@ dependencies:
   google_fonts: ^3.0.1
   hooks_riverpod: ^1.0.4
   intl: ^0.17.0
+  json_annotation: ^4.5.0
   salomon_bottom_bar: ^3.3.1
 
 dev_dependencies:
   bloc_test: ^9.0.3
+  build_runner: ^2.1.11
   flutter_test:
     sdk: flutter
+  json_serializable: ^6.2.0
   mocktail: ^0.3.0
   very_good_analysis: ^2.4.0
 
