@@ -17,7 +17,8 @@ class CurrencyThumbnail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => isFavorite
-      ? FavoriteCurrencyThumbnail(imageSize: imageSize, favoriteCurrency: currency)
+      ? FavoriteCurrencyThumbnail(
+          imageSize: imageSize, favoriteCurrency: currency)
       : RegularCurrencyThumbnail(
           imageSize: imageSize,
           image: currency.image ?? '',

@@ -16,8 +16,10 @@ class UserData {
   @JsonKey(name: 'held')
   final List<HeldCurrency>? heldCurrencyList;
 
-  static UserData get empty => UserData(favoriteCurrencySymbol: '', heldCurrencyList: []);
+  static UserData get empty =>
+      UserData(favoriteCurrencySymbol: '', heldCurrencyList: []);
 
-  factory UserData.fromJson(Map<String, dynamic> json) => _$UserDataFromJson(json);
+  factory UserData.fromJson(Map<String, dynamic> json) =>
+      _$UserDataFromJson(json);
   Map<String, dynamic> toJson() => _$UserDataToJson(this);
 }

@@ -18,7 +18,11 @@ class LoginState extends Equatable {
   final String password;
   final String displayName;
   final LoginStatus loginStatus;
-  const LoginState({required this.email, required this.password, required this.displayName, required this.loginStatus});
+  const LoginState(
+      {required this.email,
+      required this.password,
+      required this.displayName,
+      required this.loginStatus});
 
   factory LoginState.initial() {
     return const LoginState(

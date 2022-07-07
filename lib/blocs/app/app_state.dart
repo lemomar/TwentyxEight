@@ -2,12 +2,14 @@ part of 'app_bloc.dart';
 
 enum AppStatus { authenticated, unauthenticated }
 
-
 class AppState extends Equatable {
   const AppState.unauthenticated(List<Currency> currencies)
       : this._(status: AppStatus.unauthenticated, currencies: currencies);
   const AppState.authenticated(User user, List<Currency> currencies)
-      : this._(status: AppStatus.authenticated, user: user, currencies: currencies);
+      : this._(
+            status: AppStatus.authenticated,
+            user: user,
+            currencies: currencies);
   const AppState._({
     required this.status,
     this.user = User.empty,

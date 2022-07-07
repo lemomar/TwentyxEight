@@ -18,7 +18,8 @@ class PasswordInput extends StatelessWidget {
       builder: (context, state) {
         return TextFormField(
           obscureText: true,
-          onChanged: (value) => context.read<LoginCubit>().passwordChanged(value),
+          onChanged: (value) =>
+              context.read<LoginCubit>().passwordChanged(value),
           decoration: InputDecoration(
             focusColor: color,
             enabledBorder: OutlineInputBorder(

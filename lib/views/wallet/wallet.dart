@@ -16,12 +16,14 @@ class WalletView extends StatelessWidget {
     final appState = appBloc.state;
     final isUserLoggedIn = appState.status == AppStatus.authenticated;
     final heldCurrencyList = appBloc.state.user.data?.heldCurrencyList;
-    final userHasNoCurrencies = heldCurrencyList == null || heldCurrencyList.isEmpty;
+    final userHasNoCurrencies =
+        heldCurrencyList == null || heldCurrencyList.isEmpty;
     final currencies = appBloc.state.currencies;
     if (!isUserLoggedIn) return const LoggedOutView();
     final heldCurrencies = currencies
         .where(
-          (element) => (heldCurrencyList ?? []).any((element1) => element.symbol == element1.symbol),
+          (element) => (heldCurrencyList ?? [])
+              .any((element1) => element.symbol == element1.symbol),
         )
         .toList();
     return DefaultTabController(

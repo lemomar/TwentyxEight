@@ -12,7 +12,8 @@ class CurrencyCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final priceChangePercentage = currency.priceChangePercentage24h ?? Currency.empty.priceChangePercentage24h!;
+    final priceChangePercentage = currency.priceChangePercentage24h ??
+        Currency.empty.priceChangePercentage24h!;
     final priceChangeIsPositive = priceChangePercentage > 0;
     final priceChange = priceChangePercentage.abs().toStringAsFixed(4);
     final priceChangePrefix = priceChangeIsPositive ? '▲ ' : '▼ ';
@@ -23,11 +24,13 @@ class CurrencyCard extends StatelessWidget {
         barrierDismissible: true,
         useSafeArea: false,
         context: context,
-        builder: (context) => CurrentValueHeldEditDialog(symbol: currency.symbol ?? ''),
+        builder: (context) =>
+            CurrentValueHeldEditDialog(symbol: currency.symbol ?? ''),
       ),
       title: Text(currency.name ?? ''),
       leading: isFavorite
-          ? FavoriteCurrencyThumbnail(imageSize: imageSize, favoriteCurrency: currency)
+          ? FavoriteCurrencyThumbnail(
+              imageSize: imageSize, favoriteCurrency: currency)
           : RegularCurrencyThumbnail(
               imageSize: imageSize,
               image: currency.image ?? '',
@@ -53,13 +56,17 @@ class CurrencyCard extends StatelessWidget {
             IconButton(
               onPressed: () {
                 final newFavorite = isFavorite ? null : currency.symbol;
-                bloc.add(FavoriteCurrencyChanged(favoriteCurrencySymbol: newFavorite, user: bloc.state.user));
+                bloc.add(FavoriteCurrencyChanged(
+                    favoriteCurrencySymbol: newFavorite,
+                    user: bloc.state.user));
               },
               icon: Stack(
                 children: [
                   Icon(
                     Icons.favorite,
-                    color: isFavorite ? Theme.of(context).colorScheme.secondary : Colors.transparent,
+                    color: isFavorite
+                        ? Theme.of(context).colorScheme.secondary
+                        : Colors.transparent,
                   ),
                   Icon(
                     Icons.favorite_border,

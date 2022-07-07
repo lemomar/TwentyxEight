@@ -22,7 +22,9 @@ class HomeView extends StatelessWidget {
               // const TopBar(),
               Header(
                 'Home',
-                actions: [TopBarIcon(onPressed: () {}, icon: const Icon(Icons.person))],
+                actions: [
+                  TopBarIcon(onPressed: () {}, icon: const Icon(Icons.person))
+                ],
               ),
 
               const SizedBox(height: 16),

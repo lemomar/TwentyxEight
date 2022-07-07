@@ -13,12 +13,15 @@ part 'app_event.dart';
 part 'app_state.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
-  AppBloc({required AuthRepository authRepository, required UserDataRepository userDataRepository})
+  AppBloc(
+      {required AuthRepository authRepository,
+      required UserDataRepository userDataRepository})
       : _authRepository = authRepository,
         _userDataRepository = userDataRepository,
         super(
           authRepository.currentUser.isNotEmpty
-              ? AppState.authenticated(authRepository.currentUser, defaultCurrencyList)
+              ? AppState.authenticated(
+                  authRepository.currentUser, defaultCurrencyList)
               : const AppState.unauthenticated(defaultCurrencyList),
         ) {
     on<CurrencyDataChanged>(_onCurrencyDataChanged);
@@ -32,10 +35,12 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       add(AppUserChanged(user: user));
     });
 
-    currencyDataSubscription = _userDataRepository.getCurrencies().listen((currencyList) {
+    currencyDataSubscription =
+        _userDataRepository.getCurrencies().listen((currencyList) {
       final currencies = currencyList.docs
           .map((snapshot) {
-            final data = (snapshot.data() ?? <String, dynamic>{}) as Map<String, dynamic>;
+            final data = (snapshot.data() ?? <String, dynamic>{})
+                as Map<String, dynamic>;
             final metadaProvider = sampleCurrencyList.firstWhere(
               (currency) =>
                   (currency.symbol ?? '').toLowerCase().replaceAll('_', '') ==
@@ -49,12 +54,16 @@ class AppBloc extends Bloc<AppEvent, AppState> {
             data['symbol'] = metadaProvider.symbol;
             data['name'] = metadaProvider.name ?? Currency.empty.name;
             data['image'] = metadaProvider.image ?? Currency.empty.image;
-            data['marketCap'] = metadaProvider.marketCap ?? Currency.empty.marketCap;
-            data['marketCapRank'] = metadaProvider.marketCapRank ?? Currency.empty.marketCapRank;
+            data['marketCap'] =
+                metadaProvider.marketCap ?? Currency.empty.marketCap;
+            data['marketCapRank'] =
+                metadaProvider.marketCapRank ?? Currency.empty.marketCapRank;
             data['priceChangePercentage24h'] =
-                metadaProvider.priceChangePercentage24h ?? Currency.empty.priceChangePercentage24h;
+                metadaProvider.priceChangePercentage24h ??
+                    Currency.empty.priceChangePercentage24h;
             data['marketCapChangePercentage24h'] =
-                metadaProvider.marketCapChangePercentage24h ?? Currency.empty.marketCapChangePercentage24h;
+                metadaProvider.marketCapChangePercentage24h ??
+                    Currency.empty.marketCapChangePercentage24h;
             final value = Currency.fromJson(data);
             return value;
           })
@@ -75,7 +84,8 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   late final StreamSubscription<QuerySnapshot> currencyDataSubscription;
   late final StreamSubscription? _userDataStreamSubscription;
 
-  void _onCurrencyDataChanged(CurrencyDataChanged event, Emitter<AppState> emit) {
+  void _onCurrencyDataChanged(
+      CurrencyDataChanged event, Emitter<AppState> emit) {
     try {
       if (event.currencies.isNotEmpty) {
         emit(
@@ -92,8 +102,9 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   void _onUserChanged(AppUserChanged event, Emitter<AppState> emit) {
     try {
       if (event.user.isNotEmpty) {
-        _userDataStreamSubscription =
-            _userDataRepository.getUserData(event.user.id).listen((DocumentSnapshot documentSnapshot) {
+        _userDataStreamSubscription = _userDataRepository
+            .getUserData(event.user.id)
+            .listen((DocumentSnapshot documentSnapshot) {
           if (documentSnapshot.data() != null) {
             final data = documentSnapshot.data()! as Map<String, dynamic>;
             add(
@@ -125,12 +136,16 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         : AppState.unauthenticated(state.currencies));
   }
 
-  void _onFavoriteCurrencyChanged(FavoriteCurrencyChanged event, Emitter<AppState> emit) {
-    unawaited(_userDataRepository.setFavoriteCurrency(event.user.id, event.favoriteCurrencySymbol));
+  void _onFavoriteCurrencyChanged(
+      FavoriteCurrencyChanged event, Emitter<AppState> emit) {
+    unawaited(_userDataRepository.setFavoriteCurrency(
+        event.user.id, event.favoriteCurrencySymbol));
   }
 
-  Future<void> _onHeldCurrencyListChanged(HeldCurrencyListChanged event, Emitter<AppState> emit) async {
-    final success = await _userDataRepository.setHeldCurrencyList(event.user.id, event.heldCurrencyList);
+  Future<void> _onHeldCurrencyListChanged(
+      HeldCurrencyListChanged event, Emitter<AppState> emit) async {
+    final success = await _userDataRepository.setHeldCurrencyList(
+        event.user.id, event.heldCurrencyList);
     if (!success) {
       // error dialog
     }
@@ -138,10 +153,13 @@ class AppBloc extends Bloc<AppEvent, AppState> {
 
   bool isUserLoggedIn() => state.user.isNotEmpty;
 
-  bool isFavorite(Currency currency) => currency.symbol == (state.user.data ?? UserData.empty).favoriteCurrencySymbol;
+  bool isFavorite(Currency currency) =>
+      currency.symbol ==
+      (state.user.data ?? UserData.empty).favoriteCurrencySymbol;
 
   double getHeldValue(Currency currency) {
-    final matches = state.user.data?.heldCurrencyList?.where((element) => element.symbol == currency.symbol);
+    final matches = state.user.data?.heldCurrencyList
+        ?.where((element) => element.symbol == currency.symbol);
     if (matches == null || matches.isEmpty) return 0;
     return matches.first.value;
   }

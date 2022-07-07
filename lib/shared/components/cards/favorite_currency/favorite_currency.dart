@@ -17,8 +17,9 @@ class FavoriteCurrencyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = context.watch<AppBloc>();
     final data = bloc.state.currencies
-        .where(
-            (Currency currency) => (bloc.state.user.data ?? UserData.empty).favoriteCurrencySymbol == currency.symbol)
+        .where((Currency currency) =>
+            (bloc.state.user.data ?? UserData.empty).favoriteCurrencySymbol ==
+            currency.symbol)
         .toList();
     final favoriteCurrency = data.isNotEmpty ? data.first : null;
     final isUserLoggedIn = bloc.state.user.isNotEmpty;
@@ -66,7 +67,9 @@ class FavoriteCurrencyCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       FavoriteWidgetDetails(favoriteCurrency: favoriteCurrency),
-                      FavoriteCurrencyThumbnail(imageSize: imageSize, favoriteCurrency: favoriteCurrency),
+                      FavoriteCurrencyThumbnail(
+                          imageSize: imageSize,
+                          favoriteCurrency: favoriteCurrency),
                     ],
                   ),
                 ],

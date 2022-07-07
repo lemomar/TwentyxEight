@@ -8,9 +8,11 @@ const List<CurrencyValue> defaultCurrencyValueList = [];
 
 @JsonSerializable()
 class CurrencyValue extends Equatable {
-  const CurrencyValue({this.symbol = '', required this.value, required this.timestamp});
+  const CurrencyValue(
+      {this.symbol = '', required this.value, required this.timestamp});
 
-  factory CurrencyValue.fromJson(Map<String, dynamic> json) => _$CurrencyValueFromJson(json);
+  factory CurrencyValue.fromJson(Map<String, dynamic> json) =>
+      _$CurrencyValueFromJson(json);
 
   static const CurrencyValue empty = CurrencyValue(value: 0, timestamp: 0);
 
@@ -21,7 +23,8 @@ class CurrencyValue extends Equatable {
   final double timestamp;
 
   @override
-  String toString() => 'CurrencyValue(symbol: $symbol, value: $value, timestamp: $timestamp)';
+  String toString() =>
+      'CurrencyValue(symbol: $symbol, value: $value, timestamp: $timestamp)';
 
   @override
   List<Object?> get props => [symbol, value, timestamp];

@@ -61,7 +61,8 @@ class CurrentValueHeldEditDialog extends HookWidget {
                       bloc.add(
                         HeldCurrencyListChanged(
                           heldCurrencyList: [
-                            ...?bloc.state.user.data?.heldCurrencyList?.where((element) => element.symbol != symbol),
+                            ...?bloc.state.user.data?.heldCurrencyList
+                                ?.where((element) => element.symbol != symbol),
                             ...newCurrency,
                           ],
                           user: bloc.state.user,

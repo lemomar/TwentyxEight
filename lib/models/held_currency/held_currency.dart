@@ -13,8 +13,10 @@ class HeldCurrency {
   final double value;
   final String symbol;
 
-  factory HeldCurrency.fromJson(Map<String, dynamic> json) => _$HeldCurrencyFromJson(json);
+  factory HeldCurrency.fromJson(Map<String, dynamic> json) =>
+      _$HeldCurrencyFromJson(json);
   Map<String, dynamic> toJson() => _$HeldCurrencyToJson(this);
 }
 
-final sampleHeldCurrencyList = sampleCurrencyList.map((currency) => currency.toHeldCurrency(1)).toList();
+final sampleHeldCurrencyList =
+    sampleCurrencyList.map((currency) => currency.toHeldCurrency(1)).toList();

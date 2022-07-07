@@ -1,6 +1,6 @@
 name: twenty_eight
 description: Your first step into personal finance.
-version: 0.0.4
+version: 1.0.0
 publish_to: none
 
 environment:

@@ -24,7 +24,8 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   Future<void> logout() async {
-    emit(state.copyWith(email: '', password: '', loginStatus: LoginStatus.initial));
+    emit(state.copyWith(
+        email: '', password: '', loginStatus: LoginStatus.initial));
     await _authRepository.logout();
   }
 

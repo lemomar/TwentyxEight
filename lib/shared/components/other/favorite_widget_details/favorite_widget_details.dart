@@ -16,7 +16,8 @@ class FavoriteWidgetDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = context.watch<AppBloc>();
-    final priceChangePercentage = favoriteCurrency.priceChangePercentage24h ?? Currency.empty.priceChangePercentage24h!;
+    final priceChangePercentage = favoriteCurrency.priceChangePercentage24h ??
+        Currency.empty.priceChangePercentage24h!;
     final priceChangeIsPositive = priceChangePercentage > 0;
     final priceChange = priceChangePercentage.abs().toStringAsFixed(4);
     final priceChangePrefix = priceChangeIsPositive ? '▲ ' : '▼ ';
@@ -40,7 +41,8 @@ class FavoriteWidgetDetails extends StatelessWidget {
                 barrierDismissible: true,
                 useSafeArea: false,
                 context: context,
-                builder: (context) => CurrentValueHeldEditDialog(symbol: symbol),
+                builder: (context) =>
+                    CurrentValueHeldEditDialog(symbol: symbol),
               ),
               icon: const Icon(Icons.edit),
             ),

@@ -18,10 +18,12 @@ class AuthWrapper extends StatelessWidget {
         late String message;
         switch (state.loginStatus) {
           case LoginStatus.userNotFound:
-            message = 'That user does not exist. Did you create an account yet?';
+            message =
+                'That user does not exist. Did you create an account yet?';
             break;
           case LoginStatus.error:
-            message = 'An error occured. Please check your credentials and try again';
+            message =
+                'An error occured. Please check your credentials and try again';
             break;
           case LoginStatus.wrongPassword:
             message = 'The password you provided is invalid.';

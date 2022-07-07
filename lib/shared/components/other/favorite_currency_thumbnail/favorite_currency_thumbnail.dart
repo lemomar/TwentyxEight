@@ -26,7 +26,8 @@ class FavoriteCurrencyThumbnail extends StatelessWidget {
           bottom: 0,
           child: CircleAvatar(
             radius: 10,
-            backgroundColor: darken(Theme.of(context).colorScheme.secondary, .8).withOpacity(.5),
+            backgroundColor: darken(Theme.of(context).colorScheme.secondary, .8)
+                .withOpacity(.5),
             child: Center(
               child: Icon(
                 size: 12,

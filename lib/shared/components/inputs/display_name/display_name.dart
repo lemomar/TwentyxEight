@@ -14,10 +14,12 @@ class DisplayNameInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginCubit, LoginState>(
-      buildWhen: (previous, current) => previous.displayName != current.displayName,
+      buildWhen: (previous, current) =>
+          previous.displayName != current.displayName,
       builder: (context, state) {
         return TextFormField(
-          onChanged: (value) => context.read<LoginCubit>().displayNameChanged(value),
+          onChanged: (value) =>
+              context.read<LoginCubit>().displayNameChanged(value),
           decoration: InputDecoration(
             labelText: 'Display Name',
             focusColor: color,

@@ -1,4 +1,5 @@
-String getCryptoName(String symbol) => cryptoNames[symbol] ?? 'Unknown Currency';
+String getCryptoName(String symbol) =>
+    cryptoNames[symbol] ?? 'Unknown Currency';
 
 const Map<String, String> cryptoNames = {
   'BTC': 'Bitcoin ',
@@ -281,7 +282,8 @@ const sampleData = [
     'id': 'eos',
     'symbol': 'eos',
     'name': 'EOS',
-    'image': 'https://assets.coingecko.com/coins/images/738/large/eos-eos-logo.png?1547034481',
+    'image':
+        'https://assets.coingecko.com/coins/images/738/large/eos-eos-logo.png?1547034481',
     'current_price': 1.014,
     'market_cap': 1016337082,
     'market_cap_rank': 50,
@@ -302,7 +304,11 @@ const sampleData = [
     'atl': 0.427464,
     'atl_change_percentage': 138.10609,
     'atl_date': '2017-10-23T00:00:00.000Z',
-    'roi': {'times': 0.040756879232259596, 'currency': 'usd', 'percentage': 4.07568792322596},
+    'roi': {
+      'times': 0.040756879232259596,
+      'currency': 'usd',
+      'percentage': 4.07568792322596
+    },
     'last_updated': '2022-07-07T20:36:32.184Z',
     'sparkline_in_7d': {
       'price': [
@@ -481,7 +487,8 @@ const sampleData = [
     'id': 'aave',
     'symbol': 'aave',
     'name': 'Aave',
-    'image': 'https://assets.coingecko.com/coins/images/12645/large/AAVE.png?1601374110',
+    'image':
+        'https://assets.coingecko.com/coins/images/12645/large/AAVE.png?1601374110',
     'current_price': 69.33,
     'market_cap': 967554713,
     'market_cap_rank': 52,
@@ -681,7 +688,8 @@ const sampleData = [
     'id': 'dash',
     'symbol': 'dash',
     'name': 'Dash',
-    'image': 'https://assets.coingecko.com/coins/images/19/large/dash-logo.png?1548385930',
+    'image':
+        'https://assets.coingecko.com/coins/images/19/large/dash-logo.png?1548385930',
     'current_price': 45.2,
     'market_cap': 488284814,
     'market_cap_rank': 91,
@@ -881,7 +889,8 @@ const sampleData = [
     'id': 'celo',
     'symbol': 'celo',
     'name': 'Celo',
-    'image': 'https://assets.coingecko.com/coins/images/11090/large/icon-celo-CELO-color-500.png?1592293590',
+    'image':
+        'https://assets.coingecko.com/coins/images/11090/large/icon-celo-CELO-color-500.png?1592293590',
     'current_price': 0.94723,
     'market_cap': 427753989,
     'market_cap_rank': 95,
@@ -1081,7 +1090,8 @@ const sampleData = [
     'id': 'gala',
     'symbol': 'gala',
     'name': 'Gala',
-    'image': 'https://assets.coingecko.com/coins/images/12493/large/GALA-COINGECKO.png?1600233435',
+    'image':
+        'https://assets.coingecko.com/coins/images/12493/large/GALA-COINGECKO.png?1600233435',
     'current_price': 0.056226,
     'market_cap': 424613491,
     'market_cap_rank': 97,
@@ -1281,7 +1291,8 @@ const sampleData = [
     'id': 'ankr',
     'symbol': 'ankr',
     'name': 'Ankr',
-    'image': 'https://assets.coingecko.com/coins/images/4324/large/U85xTl2.png?1608111978',
+    'image':
+        'https://assets.coingecko.com/coins/images/4324/large/U85xTl2.png?1608111978',
     'current_price': 0.02939233,
     'market_cap': 240149633,
     'market_cap_rank': 144,
@@ -1302,7 +1313,11 @@ const sampleData = [
     'atl': 0.00063273,
     'atl_change_percentage': 4542.06414,
     'atl_date': '2020-03-13T02:24:03.563Z',
-    'roi': {'times': 3.5232995297869847, 'currency': 'usd', 'percentage': 352.3299529786985},
+    'roi': {
+      'times': 3.5232995297869847,
+      'currency': 'usd',
+      'percentage': 352.3299529786985
+    },
     'last_updated': '2022-07-07T20:36:22.934Z',
     'sparkline_in_7d': {
       'price': [
@@ -1482,7 +1497,8 @@ const sampleData = [
     'id': 'sushi',
     'symbol': 'sushi',
     'name': 'Sushi',
-    'image': 'https://assets.coingecko.com/coins/images/12271/large/512x512_Logo_no_chop.png?1606986688',
+    'image':
+        'https://assets.coingecko.com/coins/images/12271/large/512x512_Logo_no_chop.png?1606986688',
     'current_price': 1.17,
     'market_cap': 225311255,
     'market_cap_rank': 150,
@@ -1682,7 +1698,8 @@ const sampleData = [
     'id': 'link',
     'symbol': 'ln',
     'name': 'LINK',
-    'image': 'https://assets.coingecko.com/coins/images/6450/large/linklogo.png?1547042644',
+    'image':
+        'https://assets.coingecko.com/coins/images/6450/large/linklogo.png?1547042644',
     'current_price': 36.29,
     'market_cap': 223815864,
     'market_cap_rank': 152,
@@ -1882,7 +1899,8 @@ const sampleData = [
     'id': 'storj',
     'symbol': 'storj',
     'name': 'Storj',
-    'image': 'https://assets.coingecko.com/coins/images/949/large/storj.png?1547034811',
+    'image':
+        'https://assets.coingecko.com/coins/images/949/large/storj.png?1547034811',
     'current_price': 0.755369,
     'market_cap': 108520478,
     'market_cap_rank': 227,
@@ -1903,7 +1921,11 @@ const sampleData = [
     'atl': 0.04492437,
     'atl_change_percentage': 1583.18204,
     'atl_date': '2020-03-13T02:29:53.872Z',
-    'roi': {'times': 0.5344552723460756, 'currency': 'usd', 'percentage': 53.44552723460756},
+    'roi': {
+      'times': 0.5344552723460756,
+      'currency': 'usd',
+      'percentage': 53.44552723460756
+    },
     'last_updated': '2022-07-07T20:36:09.963Z',
     'sparkline_in_7d': {
       'price': [
@@ -2082,7 +2104,8 @@ const sampleData = [
     'id': 'nkn',
     'symbol': 'nkn',
     'name': 'NKN',
-    'image': 'https://assets.coingecko.com/coins/images/3375/large/nkn.png?1548329212',
+    'image':
+        'https://assets.coingecko.com/coins/images/3375/large/nkn.png?1548329212',
     'current_price': 0.092539,
     'market_cap': 60163993,
     'market_cap_rank': 348,
@@ -2103,7 +2126,11 @@ const sampleData = [
     'atl': 0.00597427,
     'atl_change_percentage': 1449.69694,
     'atl_date': '2020-03-13T02:22:29.583Z',
-    'roi': {'times': -0.4778233802251532, 'currency': 'usd', 'percentage': -47.78233802251532},
+    'roi': {
+      'times': -0.4778233802251532,
+      'currency': 'usd',
+      'percentage': -47.78233802251532
+    },
     'last_updated': '2022-07-07T20:36:16.281Z',
     'sparkline_in_7d': {
       'price': [

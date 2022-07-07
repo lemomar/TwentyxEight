@@ -5,7 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../models/models.dart';
 
 class UserDataRepository {
-  UserDataRepository({FirebaseFirestore? firestore}) : _firestore = firestore ?? FirebaseFirestore.instance;
+  UserDataRepository({FirebaseFirestore? firestore})
+      : _firestore = firestore ?? FirebaseFirestore.instance;
   final FirebaseFirestore? _firestore;
 
   Stream<QuerySnapshot> getCurrencies() async* {
@@ -24,11 +25,13 @@ class UserDataRepository {
     }
   }
 
-  Future<bool> setFavoriteCurrency(String userId, String? favoriteCurrencySymbol) async {
+  Future<bool> setFavoriteCurrency(
+      String userId, String? favoriteCurrencySymbol) async {
     try {
       final doc = _firestore!.collection('user_data').doc(userId);
       await doc.set(
-        {'favoriteCurrencySymbol': favoriteCurrencySymbol} as Map<String, dynamic>,
+        {'favoriteCurrencySymbol': favoriteCurrencySymbol}
+            as Map<String, dynamic>,
         SetOptions(merge: true),
       );
       return true;
@@ -37,12 +40,17 @@ class UserDataRepository {
     }
   }
 
-  Future<bool> setHeldCurrencyList(String userId, List<HeldCurrency> heldCurrencyList) async {
+  Future<bool> setHeldCurrencyList(
+      String userId, List<HeldCurrency> heldCurrencyList) async {
     try {
       final doc = _firestore!.collection('user_data').doc(userId);
       print(heldCurrencyList);
       await doc.set(
-        {'held': heldCurrencyList.map((HeldCurrency currency) => currency.toJson()).toList()} as Map<String, dynamic>,
+        {
+          'held': heldCurrencyList
+              .map((HeldCurrency currency) => currency.toJson())
+              .toList()
+        } as Map<String, dynamic>,
         SetOptions(merge: true),
       );
       print('LESGO');

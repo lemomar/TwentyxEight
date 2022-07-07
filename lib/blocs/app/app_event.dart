@@ -38,7 +38,8 @@ class UserDataChanged extends AppEvent {
 }
 
 class FavoriteCurrencyChanged extends AppEvent {
-  const FavoriteCurrencyChanged({required this.favoriteCurrencySymbol, required this.user});
+  const FavoriteCurrencyChanged(
+      {required this.favoriteCurrencySymbol, required this.user});
 
   final String? favoriteCurrencySymbol;
   final User user;
@@ -48,7 +49,8 @@ class FavoriteCurrencyChanged extends AppEvent {
 }
 
 class HeldCurrencyListChanged extends AppEvent {
-  const HeldCurrencyListChanged({required this.heldCurrencyList, required this.user});
+  const HeldCurrencyListChanged(
+      {required this.heldCurrencyList, required this.user});
 
   final List<HeldCurrency> heldCurrencyList;
   final User user;
