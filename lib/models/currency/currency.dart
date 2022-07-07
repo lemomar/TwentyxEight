@@ -19,12 +19,21 @@ class Currency {
     required this.priceChangePercentage24h,
     required this.marketCapChangePercentage24h,
   });
-  factory Currency.fromJson(Map<String, dynamic> json) =>
-      _$CurrencyFromJson(json);
+  factory Currency.fromJson(Map<String, dynamic> json) => _$CurrencyFromJson(json);
   Map<String, dynamic> toJson() => _$CurrencyToJson(this);
+  Currency copyWithNewPrice(double newPrice) => Currency(
+        id: id,
+        symbol: symbol,
+        name: name,
+        image: image,
+        price: newPrice,
+        marketCap: marketCap,
+        marketCapRank: marketCapRank,
+        priceChangePercentage24h: priceChangePercentage24h,
+        marketCapChangePercentage24h: marketCapChangePercentage24h,
+      );
 
-  HeldCurrency toHeldCurrency(double value) =>
-      HeldCurrency(value: value, symbol: symbol ?? 'unknown');
+  HeldCurrency toHeldCurrency(double value) => HeldCurrency(value: value, symbol: symbol ?? 'unknown');
 
   static const empty = Currency(
     id: '',
@@ -59,8 +68,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'bitcoin',
     'symbol': 'btc',
     'name': 'Bitcoin',
-    'image':
-        'https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579',
+    'image': 'https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579',
     'current_price': 21417,
     'market_cap': 409177863629,
     'market_cap_rank': 1,
@@ -87,8 +95,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'ethereum',
     'symbol': 'eth',
     'name': 'Ethereum',
-    'image':
-        'https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880',
+    'image': 'https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880',
     'current_price': 1228.11,
     'market_cap': 147038637667,
     'market_cap_rank': 2,
@@ -107,19 +114,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.381455,
     'atl_change_percentage': 322219.04213,
     'atl_date': '2015-10-20T00:00:00.000Z',
-    'roi': {
-      'times': 75.61124329627177,
-      'currency': 'btc',
-      'percentage': 7561.124329627178
-    },
+    'roi': {'times': 75.61124329627177, 'currency': 'btc', 'percentage': 7561.124329627178},
     'last_updated': '2022-07-07T20:02:24.605Z'
   },
   {
     'id': 'tether',
     'symbol': 'usdt',
     'name': 'Tether',
-    'image':
-        'https://assets.coingecko.com/coins/images/325/large/Tether-logo.png?1598003707',
+    'image': 'https://assets.coingecko.com/coins/images/325/large/Tether-logo.png?1598003707',
     'current_price': 0.983718,
     'market_cap': 64919740890,
     'market_cap_rank': 3,
@@ -144,8 +146,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'usd-coin',
     'symbol': 'usdc',
     'name': 'USD Coin',
-    'image':
-        'https://assets.coingecko.com/coins/images/6319/large/USD_Coin_icon.png?1547042389',
+    'image': 'https://assets.coingecko.com/coins/images/6319/large/USD_Coin_icon.png?1547042389',
     'current_price': 0.986017,
     'market_cap': 54682335198,
     'market_cap_rank': 4,
@@ -170,8 +171,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'binancecoin',
     'symbol': 'bnb',
     'name': 'BNB',
-    'image':
-        'https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1644979850',
+    'image': 'https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1644979850',
     'current_price': 239.29,
     'market_cap': 39120973954,
     'market_cap_rank': 5,
@@ -198,8 +198,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'binance-usd',
     'symbol': 'busd',
     'name': 'Binance USD',
-    'image':
-        'https://assets.coingecko.com/coins/images/9576/large/BUSD.png?1568947766',
+    'image': 'https://assets.coingecko.com/coins/images/9576/large/BUSD.png?1568947766',
     'current_price': 0.988146,
     'market_cap': 17607513946,
     'market_cap_rank': 6,
@@ -224,8 +223,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'ripple',
     'symbol': 'xrp',
     'name': 'XRP',
-    'image':
-        'https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1605778731',
+    'image': 'https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1605778731',
     'current_price': 0.336437,
     'market_cap': 16275052064,
     'market_cap_rank': 7,
@@ -252,8 +250,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'cardano',
     'symbol': 'ada',
     'name': 'Cardano',
-    'image':
-        'https://assets.coingecko.com/coins/images/975/large/cardano.png?1547034860',
+    'image': 'https://assets.coingecko.com/coins/images/975/large/cardano.png?1547034860',
     'current_price': 0.472285,
     'market_cap': 16020728434,
     'market_cap_rank': 8,
@@ -280,8 +277,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'solana',
     'symbol': 'sol',
     'name': 'Solana',
-    'image':
-        'https://assets.coingecko.com/coins/images/4128/large/solana.png?1640133422',
+    'image': 'https://assets.coingecko.com/coins/images/4128/large/solana.png?1640133422',
     'current_price': 38.34,
     'market_cap': 13169449176,
     'market_cap_rank': 9,
@@ -306,8 +302,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'dogecoin',
     'symbol': 'doge',
     'name': 'Dogecoin',
-    'image':
-        'https://assets.coingecko.com/coins/images/5/large/dogecoin.png?1547792256',
+    'image': 'https://assets.coingecko.com/coins/images/5/large/dogecoin.png?1547792256',
     'current_price': 0.069956,
     'market_cap': 9294408218,
     'market_cap_rank': 10,
@@ -331,8 +326,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'polkadot',
     'symbol': 'dot',
     'name': 'Polkadot',
-    'image':
-        'https://assets.coingecko.com/coins/images/12171/large/polkadot.png?1639712644',
+    'image': 'https://assets.coingecko.com/coins/images/12171/large/polkadot.png?1639712644',
     'current_price': 7.17,
     'market_cap': 8111186517,
     'market_cap_rank': 11,
@@ -357,8 +351,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'shiba-inu',
     'symbol': 'shib',
     'name': 'Shiba Inu',
-    'image':
-        'https://assets.coingecko.com/coins/images/11939/large/shiba.png?1622619446',
+    'image': 'https://assets.coingecko.com/coins/images/11939/large/shiba.png?1622619446',
     'current_price': 0.00001086,
     'market_cap': 6415784728,
     'market_cap_rank': 12,
@@ -383,8 +376,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'dai',
     'symbol': 'dai',
     'name': 'Dai',
-    'image':
-        'https://assets.coingecko.com/coins/images/9956/large/4943.png?1636636734',
+    'image': 'https://assets.coingecko.com/coins/images/9956/large/4943.png?1636636734',
     'current_price': 0.984564,
     'market_cap': 6313341714,
     'market_cap_rank': 13,
@@ -411,8 +403,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'tron',
     'symbol': 'trx',
     'name': 'TRON',
-    'image':
-        'https://assets.coingecko.com/coins/images/1094/large/tron-logo.png?1547035066',
+    'image': 'https://assets.coingecko.com/coins/images/1094/large/tron-logo.png?1547035066',
     'current_price': 0.067652,
     'market_cap': 6264401051,
     'market_cap_rank': 14,
@@ -431,19 +422,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.00154713,
     'atl_change_percentage': 4278.45873,
     'atl_date': '2017-11-12T00:00:00.000Z',
-    'roi': {
-      'times': 35.19661296800621,
-      'currency': 'usd',
-      'percentage': 3519.6612968006207
-    },
+    'roi': {'times': 35.19661296800621, 'currency': 'usd', 'percentage': 3519.6612968006207},
     'last_updated': '2022-07-07T20:02:30.836Z'
   },
   {
     'id': 'avalanche-2',
     'symbol': 'avax',
     'name': 'Avalanche',
-    'image':
-        'https://assets.coingecko.com/coins/images/12559/large/coin-round-red.png?1604021818',
+    'image': 'https://assets.coingecko.com/coins/images/12559/large/coin-round-red.png?1604021818',
     'current_price': 20.11,
     'market_cap': 5705879220,
     'market_cap_rank': 15,
@@ -470,8 +456,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'wrapped-bitcoin',
     'symbol': 'wbtc',
     'name': 'Wrapped Bitcoin',
-    'image':
-        'https://assets.coingecko.com/coins/images/7598/large/wrapped_bitcoin_wbtc.png?1548822744',
+    'image': 'https://assets.coingecko.com/coins/images/7598/large/wrapped_bitcoin_wbtc.png?1548822744',
     'current_price': 21400,
     'market_cap': 5550598625,
     'market_cap_rank': 16,
@@ -498,8 +483,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'leo-token',
     'symbol': 'leo',
     'name': 'LEO Token',
-    'image':
-        'https://assets.coingecko.com/coins/images/8418/large/leo-token.png?1558326215',
+    'image': 'https://assets.coingecko.com/coins/images/8418/large/leo-token.png?1558326215',
     'current_price': 5.74,
     'market_cap': 5367095115,
     'market_cap_rank': 17,
@@ -524,8 +508,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'staked-ether',
     'symbol': 'steth',
     'name': 'Lido Staked Ether',
-    'image':
-        'https://assets.coingecko.com/coins/images/13442/large/steth_logo.png?1608607546',
+    'image': 'https://assets.coingecko.com/coins/images/13442/large/steth_logo.png?1608607546',
     'current_price': 1193.04,
     'market_cap': 5058491392,
     'market_cap_rank': 18,
@@ -552,8 +535,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'matic-network',
     'symbol': 'matic',
     'name': 'Polygon',
-    'image':
-        'https://assets.coingecko.com/coins/images/4713/large/matic-token-icon.png?1624446912',
+    'image': 'https://assets.coingecko.com/coins/images/4713/large/matic-token-icon.png?1624446912',
     'current_price': 0.559945,
     'market_cap': 4486425484,
     'market_cap_rank': 19,
@@ -574,19 +556,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.00280202,
     'atl_change_percentage': 19897.23721,
     'atl_date': '2019-05-10T00:00:00.000Z',
-    'roi': {
-      'times': 215.4364063782227,
-      'currency': 'usd',
-      'percentage': 21543.64063782227
-    },
+    'roi': {'times': 215.4364063782227, 'currency': 'usd', 'percentage': 21543.64063782227},
     'last_updated': '2022-07-07T20:02:30.473Z'
   },
   {
     'id': 'ftx-token',
     'symbol': 'ftt',
     'name': 'FTX',
-    'image':
-        'https://assets.coingecko.com/coins/images/9026/large/F.png?1609051564',
+    'image': 'https://assets.coingecko.com/coins/images/9026/large/F.png?1609051564',
     'current_price': 27.21,
     'market_cap': 3682990902,
     'market_cap_rank': 20,
@@ -613,8 +590,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'litecoin',
     'symbol': 'ltc',
     'name': 'Litecoin',
-    'image':
-        'https://assets.coingecko.com/coins/images/2/large/litecoin.png?1547033580',
+    'image': 'https://assets.coingecko.com/coins/images/2/large/litecoin.png?1547033580',
     'current_price': 51.18,
     'market_cap': 3618856177,
     'market_cap_rank': 21,
@@ -641,8 +617,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'okb',
     'symbol': 'okb',
     'name': 'OKB',
-    'image':
-        'https://assets.coingecko.com/coins/images/4463/large/WeChat_Image_20220118095654.png?1642471050',
+    'image': 'https://assets.coingecko.com/coins/images/4463/large/WeChat_Image_20220118095654.png?1642471050',
     'current_price': 12.79,
     'market_cap': 3282301837,
     'market_cap_rank': 22,
@@ -667,8 +642,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'crypto-com-chain',
     'symbol': 'cro',
     'name': 'Cronos',
-    'image':
-        'https://assets.coingecko.com/coins/images/7310/large/oCw2s3GI_400x400.jpeg?1645172042',
+    'image': 'https://assets.coingecko.com/coins/images/7310/large/oCw2s3GI_400x400.jpeg?1645172042',
     'current_price': 0.12245,
     'market_cap': 3094723725,
     'market_cap_rank': 24,
@@ -693,8 +667,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'chainlink',
     'symbol': 'link',
     'name': 'Chainlink',
-    'image':
-        'https://assets.coingecko.com/coins/images/877/large/chainlink-new-logo.png?1547034700',
+    'image': 'https://assets.coingecko.com/coins/images/877/large/chainlink-new-logo.png?1547034700',
     'current_price': 6.61,
     'market_cap': 3090358721,
     'market_cap_rank': 23,
@@ -721,8 +694,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'stellar',
     'symbol': 'xlm',
     'name': 'Stellar',
-    'image':
-        'https://assets.coingecko.com/coins/images/100/large/Stellar_symbol_black_RGB.png?1552356157',
+    'image': 'https://assets.coingecko.com/coins/images/100/large/Stellar_symbol_black_RGB.png?1552356157',
     'current_price': 0.11283,
     'market_cap': 2832532193,
     'market_cap_rank': 25,
@@ -749,8 +721,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'cosmos',
     'symbol': 'atom',
     'name': 'Cosmos Hub',
-    'image':
-        'https://assets.coingecko.com/coins/images/1481/large/cosmos_hub.png?1555657960',
+    'image': 'https://assets.coingecko.com/coins/images/1481/large/cosmos_hub.png?1555657960',
     'current_price': 9.35,
     'market_cap': 2742623749,
     'market_cap_rank': 26,
@@ -768,19 +739,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 1.037,
     'atl_change_percentage': 804.42027,
     'atl_date': '2020-03-13T02:27:44.591Z',
-    'roi': {
-      'times': 93.99948648748433,
-      'currency': 'usd',
-      'percentage': 9399.948648748434
-    },
+    'roi': {'times': 93.99948648748433, 'currency': 'usd', 'percentage': 9399.948648748434},
     'last_updated': '2022-07-07T20:03:10.173Z'
   },
   {
     'id': 'near',
     'symbol': 'near',
     'name': 'NEAR Protocol',
-    'image':
-        'https://assets.coingecko.com/coins/images/10365/large/near_icon.png?1601359077',
+    'image': 'https://assets.coingecko.com/coins/images/10365/large/near_icon.png?1601359077',
     'current_price': 3.7,
     'market_cap': 2701683884,
     'market_cap_rank': 27,
@@ -807,8 +773,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'uniswap',
     'symbol': 'uni',
     'name': 'Uniswap',
-    'image':
-        'https://assets.coingecko.com/coins/images/12504/large/uniswap-uni.png?1600306604',
+    'image': 'https://assets.coingecko.com/coins/images/12504/large/uniswap-uni.png?1600306604',
     'current_price': 5.65,
     'market_cap': 2578799180,
     'market_cap_rank': 28,
@@ -835,8 +800,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'monero',
     'symbol': 'xmr',
     'name': 'Monero',
-    'image':
-        'https://assets.coingecko.com/coins/images/69/large/monero_logo.png?1547033729',
+    'image': 'https://assets.coingecko.com/coins/images/69/large/monero_logo.png?1547033729',
     'current_price': 129,
     'market_cap': 2344159578,
     'market_cap_rank': 29,
@@ -860,8 +824,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'algorand',
     'symbol': 'algo',
     'name': 'Algorand',
-    'image':
-        'https://assets.coingecko.com/coins/images/4380/large/download.png?1547039725',
+    'image': 'https://assets.coingecko.com/coins/images/4380/large/download.png?1547039725',
     'current_price': 0.31921,
     'market_cap': 2229582374,
     'market_cap_rank': 30,
@@ -882,19 +845,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.094202,
     'atl_change_percentage': 239.44325,
     'atl_date': '2020-03-13T02:20:48.438Z',
-    'roi': {
-      'times': -0.864790788795199,
-      'currency': 'usd',
-      'percentage': -86.4790788795199
-    },
+    'roi': {'times': -0.864790788795199, 'currency': 'usd', 'percentage': -86.4790788795199},
     'last_updated': '2022-07-07T20:03:18.931Z'
   },
   {
     'id': 'ethereum-classic',
     'symbol': 'etc',
     'name': 'Ethereum Classic',
-    'image':
-        'https://assets.coingecko.com/coins/images/453/large/ethereum-classic-logo.png?1547034169',
+    'image': 'https://assets.coingecko.com/coins/images/453/large/ethereum-classic-logo.png?1547034169',
     'current_price': 15.68,
     'market_cap': 2129570127,
     'market_cap_rank': 31,
@@ -915,19 +873,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.559997,
     'atl_change_percentage': 2702.58691,
     'atl_date': '2016-07-25T00:00:00.000Z',
-    'roi': {
-      'times': 34.432739180817066,
-      'currency': 'usd',
-      'percentage': 3443.2739180817066
-    },
+    'roi': {'times': 34.432739180817066, 'currency': 'usd', 'percentage': 3443.2739180817066},
     'last_updated': '2022-07-07T20:02:59.633Z'
   },
   {
     'id': 'bitcoin-cash',
     'symbol': 'bch',
     'name': 'Bitcoin Cash',
-    'image':
-        'https://assets.coingecko.com/coins/images/780/large/bitcoin-cash-circle.png?1594689492',
+    'image': 'https://assets.coingecko.com/coins/images/780/large/bitcoin-cash-circle.png?1594689492',
     'current_price': 109.06,
     'market_cap': 2085424169,
     'market_cap_rank': 32,
@@ -954,8 +907,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'chain-2',
     'symbol': 'xcn',
     'name': 'Chain',
-    'image':
-        'https://assets.coingecko.com/coins/images/24210/large/Chain_icon_200x200.png?1646895054',
+    'image': 'https://assets.coingecko.com/coins/images/24210/large/Chain_icon_200x200.png?1646895054',
     'current_price': 0.086603,
     'market_cap': 1864284072,
     'market_cap_rank': 34,
@@ -982,8 +934,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'theta-fuel',
     'symbol': 'tfuel',
     'name': 'Theta Fuel',
-    'image':
-        'https://assets.coingecko.com/coins/images/8029/large/1_0YusgngOrriVg4ZYx4wOFQ.png?1553483622',
+    'image': 'https://assets.coingecko.com/coins/images/8029/large/1_0YusgngOrriVg4ZYx4wOFQ.png?1553483622',
     'current_price': 0.051341,
     'market_cap': 1647579045,
     'market_cap_rank': 33,
@@ -1008,8 +959,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'vechain',
     'symbol': 'vet',
     'name': 'VeChain',
-    'image':
-        'https://assets.coingecko.com/coins/images/1167/large/VeChain-Logo-768x725.png?1547035194',
+    'image': 'https://assets.coingecko.com/coins/images/1167/large/VeChain-Logo-768x725.png?1547035194',
     'current_price': 0.02390121,
     'market_cap': 1735405067,
     'market_cap_rank': 35,
@@ -1030,11 +980,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.0017143,
     'atl_change_percentage': 1295.9882,
     'atl_date': '2020-03-13T02:29:59.652Z',
-    'roi': {
-      'times': 5.81538679512169,
-      'currency': 'eth',
-      'percentage': 581.538679512169
-    },
+    'roi': {'times': 5.81538679512169, 'currency': 'eth', 'percentage': 581.538679512169},
     'last_updated': '2022-07-07T20:03:14.106Z'
   },
   {
@@ -1067,8 +1013,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'the-sandbox',
     'symbol': 'sand',
     'name': 'The Sandbox',
-    'image':
-        'https://assets.coingecko.com/coins/images/12129/large/sandbox_logo.jpg?1597397942',
+    'image': 'https://assets.coingecko.com/coins/images/12129/large/sandbox_logo.jpg?1597397942',
     'current_price': 1.27,
     'market_cap': 1605788502,
     'market_cap_rank': 37,
@@ -1095,8 +1040,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'apecoin',
     'symbol': 'ape',
     'name': 'ApeCoin',
-    'image':
-        'https://assets.coingecko.com/coins/images/24383/large/apecoin.jpg?1647476455',
+    'image': 'https://assets.coingecko.com/coins/images/24383/large/apecoin.jpg?1647476455',
     'current_price': 5.12,
     'market_cap': 1537704445,
     'market_cap_rank': 38,
@@ -1123,8 +1067,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'internet-computer',
     'symbol': 'icp',
     'name': 'Internet Computer',
-    'image':
-        'https://assets.coingecko.com/coins/images/14495/large/Internet_Computer_logo.png?1620703073',
+    'image': 'https://assets.coingecko.com/coins/images/14495/large/Internet_Computer_logo.png?1620703073',
     'current_price': 6.1,
     'market_cap': 1475970819,
     'market_cap_rank': 39,
@@ -1151,8 +1094,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'decentraland',
     'symbol': 'mana',
     'name': 'Decentraland',
-    'image':
-        'https://assets.coingecko.com/coins/images/878/large/decentraland-mana.png?1550108745',
+    'image': 'https://assets.coingecko.com/coins/images/878/large/decentraland-mana.png?1550108745',
     'current_price': 0.924089,
     'market_cap': 1392394304,
     'market_cap_rank': 40,
@@ -1173,19 +1115,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.00792867,
     'atl_change_percentage': 11561.6913,
     'atl_date': '2017-10-31T00:00:00.000Z',
-    'roi': {
-      'times': 45.970461165961694,
-      'currency': 'usd',
-      'percentage': 4597.04611659617
-    },
+    'roi': {'times': 45.970461165961694, 'currency': 'usd', 'percentage': 4597.04611659617},
     'last_updated': '2022-07-07T20:02:13.341Z'
   },
   {
     'id': 'tezos',
     'symbol': 'xtz',
     'name': 'Tezos',
-    'image':
-        'https://assets.coingecko.com/coins/images/976/large/Tezos-logo.png?1547034862',
+    'image': 'https://assets.coingecko.com/coins/images/976/large/Tezos-logo.png?1547034862',
     'current_price': 1.55,
     'market_cap': 1383340208,
     'market_cap_rank': 41,
@@ -1203,19 +1140,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.30807,
     'atl_change_percentage': 402.93078,
     'atl_date': '2018-12-07T00:00:00.000Z',
-    'roi': {
-      'times': 2.349811481707015,
-      'currency': 'usd',
-      'percentage': 234.9811481707015
-    },
+    'roi': {'times': 2.349811481707015, 'currency': 'usd', 'percentage': 234.9811481707015},
     'last_updated': '2022-07-07T20:02:37.385Z'
   },
   {
     'id': 'hedera-hashgraph',
     'symbol': 'hbar',
     'name': 'Hedera',
-    'image':
-        'https://assets.coingecko.com/coins/images/3688/large/hbar.png?1637045634',
+    'image': 'https://assets.coingecko.com/coins/images/3688/large/hbar.png?1637045634',
     'current_price': 0.064346,
     'market_cap': 1375327241,
     'market_cap_rank': 42,
@@ -1240,8 +1172,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'frax',
     'symbol': 'frax',
     'name': 'Frax',
-    'image':
-        'https://assets.coingecko.com/coins/images/13422/large/frax_logo.png?1608476506',
+    'image': 'https://assets.coingecko.com/coins/images/13422/large/frax_logo.png?1608476506',
     'current_price': 0.98464,
     'market_cap': 1345561105,
     'market_cap_rank': 43,
@@ -1268,8 +1199,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'filecoin',
     'symbol': 'fil',
     'name': 'Filecoin',
-    'image':
-        'https://assets.coingecko.com/coins/images/12817/large/filecoin.png?1602753933',
+    'image': 'https://assets.coingecko.com/coins/images/12817/large/filecoin.png?1602753933',
     'current_price': 5.73,
     'market_cap': 1315683727,
     'market_cap_rank': 44,
@@ -1296,8 +1226,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'theta-token',
     'symbol': 'theta',
     'name': 'Theta Network',
-    'image':
-        'https://assets.coingecko.com/coins/images/2538/large/theta-token-logo.png?1548387191',
+    'image': 'https://assets.coingecko.com/coins/images/2538/large/theta-token-logo.png?1548387191',
     'current_price': 1.27,
     'market_cap': 1275219577,
     'market_cap_rank': 45,
@@ -1316,19 +1245,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.03614141,
     'atl_change_percentage': 3427.69823,
     'atl_date': '2020-03-13T02:24:16.483Z',
-    'roi': {
-      'times': 7.627412858234407,
-      'currency': 'usd',
-      'percentage': 762.7412858234406
-    },
+    'roi': {'times': 7.627412858234407, 'currency': 'usd', 'percentage': 762.7412858234406},
     'last_updated': '2022-07-07T20:02:56.452Z'
   },
   {
     'id': 'elrond-erd-2',
     'symbol': 'egld',
     'name': 'Elrond',
-    'image':
-        'https://assets.coingecko.com/coins/images/12335/large/elrond3_360.png?1626341589',
+    'image': 'https://assets.coingecko.com/coins/images/12335/large/elrond3_360.png?1626341589',
     'current_price': 56.24,
     'market_cap': 1272566261,
     'market_cap_rank': 46,
@@ -1353,8 +1277,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'axie-infinity',
     'symbol': 'axs',
     'name': 'Axie Infinity',
-    'image':
-        'https://assets.coingecko.com/coins/images/13029/large/axie_infinity_logo.png?1604471082',
+    'image': 'https://assets.coingecko.com/coins/images/13029/large/axie_infinity_logo.png?1604471082',
     'current_price': 15.15,
     'market_cap': 1260032216,
     'market_cap_rank': 47,
@@ -1381,8 +1304,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'true-usd',
     'symbol': 'tusd',
     'name': 'TrueUSD',
-    'image':
-        'https://assets.coingecko.com/coins/images/3449/large/tusd.png?1618395665',
+    'image': 'https://assets.coingecko.com/coins/images/3449/large/tusd.png?1618395665',
     'current_price': 0.983926,
     'market_cap': 1197603335,
     'market_cap_rank': 48,
@@ -1407,8 +1329,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'bitcoin-cash-sv',
     'symbol': 'bsv',
     'name': 'Bitcoin SV',
-    'image':
-        'https://assets.coingecko.com/coins/images/6799/large/BSV.png?1558947902',
+    'image': 'https://assets.coingecko.com/coins/images/6799/large/BSV.png?1558947902',
     'current_price': 55.19,
     'market_cap': 1052504663,
     'market_cap_rank': 49,
@@ -1433,8 +1354,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'eos',
     'symbol': 'eos',
     'name': 'EOS',
-    'image':
-        'https://assets.coingecko.com/coins/images/738/large/eos-eos-logo.png?1547034481',
+    'image': 'https://assets.coingecko.com/coins/images/738/large/eos-eos-logo.png?1547034481',
     'current_price': 1.018,
     'market_cap': 1019907534,
     'market_cap_rank': 50,
@@ -1452,19 +1372,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.427464,
     'atl_change_percentage': 138.76103,
     'atl_date': '2017-10-23T00:00:00.000Z',
-    'roi': {
-      'times': 0.04534096710195758,
-      'currency': 'usd',
-      'percentage': 4.534096710195757
-    },
+    'roi': {'times': 0.04534096710195758, 'currency': 'usd', 'percentage': 4.534096710195757},
     'last_updated': '2022-07-07T20:03:02.899Z'
   },
   {
     'id': 'aave',
     'symbol': 'aave',
     'name': 'Aave',
-    'image':
-        'https://assets.coingecko.com/coins/images/12645/large/AAVE.png?1601374110',
+    'image': 'https://assets.coingecko.com/coins/images/12645/large/AAVE.png?1601374110',
     'current_price': 70.31,
     'market_cap': 980200677,
     'market_cap_rank': 51,
@@ -1491,8 +1406,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'helium',
     'symbol': 'hnt',
     'name': 'Helium',
-    'image':
-        'https://assets.coingecko.com/coins/images/4284/large/Helium_HNT.png?1612620071',
+    'image': 'https://assets.coingecko.com/coins/images/4284/large/Helium_HNT.png?1612620071',
     'current_price': 9.31,
     'market_cap': 979778991,
     'market_cap_rank': 52,
@@ -1519,8 +1433,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'compound-usd-coin',
     'symbol': 'cusdc',
     'name': 'cUSDC',
-    'image':
-        'https://assets.coingecko.com/coins/images/9442/large/Compound_USDC.png?1567581577',
+    'image': 'https://assets.coingecko.com/coins/images/9442/large/Compound_USDC.png?1567581577',
     'current_price': 0.02231376,
     'market_cap': 890226534,
     'market_cap_rank': 53,
@@ -1545,8 +1458,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'maker',
     'symbol': 'mkr',
     'name': 'Maker',
-    'image':
-        'https://assets.coingecko.com/coins/images/1364/large/Mark_Maker.png?1585191826',
+    'image': 'https://assets.coingecko.com/coins/images/1364/large/Mark_Maker.png?1585191826',
     'current_price': 965.88,
     'market_cap': 871858410,
     'market_cap_rank': 55,
@@ -1573,8 +1485,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'kucoin-shares',
     'symbol': 'kcs',
     'name': 'KuCoin',
-    'image':
-        'https://assets.coingecko.com/coins/images/1047/large/sa9z79.png?1610678720',
+    'image': 'https://assets.coingecko.com/coins/images/1047/large/sa9z79.png?1610678720',
     'current_price': 8.89,
     'market_cap': 870060499,
     'market_cap_rank': 54,
@@ -1599,8 +1510,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'bittorrent',
     'symbol': 'btt',
     'name': 'BitTorrent',
-    'image':
-        'https://assets.coingecko.com/coins/images/22457/large/btt_logo.png?1643857231',
+    'image': 'https://assets.coingecko.com/coins/images/22457/large/btt_logo.png?1643857231',
     'current_price': 9.18831e-7,
     'market_cap': 852411480,
     'market_cap_rank': 56,
@@ -1627,8 +1537,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'quant-network',
     'symbol': 'qnt',
     'name': 'Quant',
-    'image':
-        'https://assets.coingecko.com/coins/images/3370/large/5ZOu7brX_400x400.jpg?1612437252',
+    'image': 'https://assets.coingecko.com/coins/images/3370/large/5ZOu7brX_400x400.jpg?1612437252',
     'current_price': 63.5,
     'market_cap': 851782297,
     'market_cap_rank': 57,
@@ -1649,19 +1558,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.186229,
     'atl_change_percentage': 33997.61414,
     'atl_date': '2018-08-23T00:00:00.000Z',
-    'roi': {
-      'times': 21.205033552962927,
-      'currency': 'eth',
-      'percentage': 2120.5033552962927
-    },
+    'roi': {'times': 21.205033552962927, 'currency': 'eth', 'percentage': 2120.5033552962927},
     'last_updated': '2022-07-07T20:02:46.303Z'
   },
   {
     'id': 'paxos-standard',
     'symbol': 'usdp',
     'name': 'Pax Dollar',
-    'image':
-        'https://assets.coingecko.com/coins/images/6013/large/Pax_Dollar.png?1629877204',
+    'image': 'https://assets.coingecko.com/coins/images/6013/large/Pax_Dollar.png?1629877204',
     'current_price': 0.985774,
     'market_cap': 838655290,
     'market_cap_rank': 58,
@@ -1680,19 +1584,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.707077,
     'atl_change_percentage': 39.44982,
     'atl_date': '2021-05-19T13:14:42.046Z',
-    'roi': {
-      'times': 0.002116695205164,
-      'currency': 'usd',
-      'percentage': 0.2116695205164
-    },
+    'roi': {'times': 0.002116695205164, 'currency': 'usd', 'percentage': 0.2116695205164},
     'last_updated': '2022-07-07T20:02:54.582Z'
   },
   {
     'id': 'huobi-btc',
     'symbol': 'hbtc',
     'name': 'Huobi BTC',
-    'image':
-        'https://assets.coingecko.com/coins/images/12407/large/Unknown-5.png?1599624896',
+    'image': 'https://assets.coingecko.com/coins/images/12407/large/Unknown-5.png?1599624896',
     'current_price': 21400,
     'market_cap': 834095063,
     'market_cap_rank': 59,
@@ -1719,8 +1618,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'ecash',
     'symbol': 'xec',
     'name': 'eCash',
-    'image':
-        'https://assets.coingecko.com/coins/images/16646/large/Logo_final-22.png?1628239446',
+    'image': 'https://assets.coingecko.com/coins/images/16646/large/Logo_final-22.png?1628239446',
     'current_price': 0.00004225,
     'market_cap': 807752956,
     'market_cap_rank': 60,
@@ -1747,8 +1645,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'iota',
     'symbol': 'miota',
     'name': 'IOTA',
-    'image':
-        'https://assets.coingecko.com/coins/images/692/large/IOTA_Swirl.png?1604238557',
+    'image': 'https://assets.coingecko.com/coins/images/692/large/IOTA_Swirl.png?1604238557',
     'current_price': 0.282862,
     'market_cap': 788496164,
     'market_cap_rank': 61,
@@ -1767,19 +1664,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.073032,
     'atl_change_percentage': 287.54318,
     'atl_date': '2020-03-13T02:22:41.168Z',
-    'roi': {
-      'times': 8.854419929533254,
-      'currency': 'btc',
-      'percentage': 885.4419929533253
-    },
+    'roi': {'times': 8.854419929533254, 'currency': 'btc', 'percentage': 885.4419929533253},
     'last_updated': '2022-07-07T20:03:03.675Z'
   },
   {
     'id': 'tenset',
     'symbol': '10set',
     'name': 'Tenset',
-    'image':
-        'https://assets.coingecko.com/coins/images/14629/large/10set.png?1617353812',
+    'image': 'https://assets.coingecko.com/coins/images/14629/large/10set.png?1617353812',
     'current_price': 3.96,
     'market_cap': 764344145,
     'market_cap_rank': 62,
@@ -1806,8 +1698,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'the-graph',
     'symbol': 'grt',
     'name': 'The Graph',
-    'image':
-        'https://assets.coingecko.com/coins/images/13397/large/Graph_Token.png?1608145566',
+    'image': 'https://assets.coingecko.com/coins/images/13397/large/Graph_Token.png?1608145566',
     'current_price': 0.101898,
     'market_cap': 754685947,
     'market_cap_rank': 63,
@@ -1834,8 +1725,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'zcash',
     'symbol': 'zec',
     'name': 'Zcash',
-    'image':
-        'https://assets.coingecko.com/coins/images/486/large/circle-zcash-color.png?1547034197',
+    'image': 'https://assets.coingecko.com/coins/images/486/large/circle-zcash-color.png?1547034197',
     'current_price': 59.46,
     'market_cap': 750652553,
     'market_cap_rank': 64,
@@ -1862,8 +1752,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'neutrino',
     'symbol': 'usdn',
     'name': 'Neutrino USD',
-    'image':
-        'https://assets.coingecko.com/coins/images/10117/large/78GWcZu.png?1600845716',
+    'image': 'https://assets.coingecko.com/coins/images/10117/large/78GWcZu.png?1600845716',
     'current_price': 0.974642,
     'market_cap': 744878611,
     'market_cap_rank': 65,
@@ -1888,8 +1777,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'thorchain',
     'symbol': 'rune',
     'name': 'THORChain',
-    'image':
-        'https://assets.coingecko.com/coins/images/6595/large/RUNE.png?1614160507',
+    'image': 'https://assets.coingecko.com/coins/images/6595/large/RUNE.png?1614160507',
     'current_price': 2.39,
     'market_cap': 719798781,
     'market_cap_rank': 66,
@@ -1910,19 +1798,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.00778017,
     'atl_change_percentage': 30661.60488,
     'atl_date': '2019-09-28T00:00:00.000Z',
-    'roi': {
-      'times': 63.007530936798844,
-      'currency': 'usd',
-      'percentage': 6300.753093679884
-    },
+    'roi': {'times': 63.007530936798844, 'currency': 'usd', 'percentage': 6300.753093679884},
     'last_updated': '2022-07-07T20:03:16.102Z'
   },
   {
     'id': 'huobi-token',
     'symbol': 'ht',
     'name': 'Huobi',
-    'image':
-        'https://assets.coingecko.com/coins/images/2822/large/huobi-token-logo.png?1547036992',
+    'image': 'https://assets.coingecko.com/coins/images/2822/large/huobi-token-logo.png?1547036992',
     'current_price': 4.65,
     'market_cap': 719465193,
     'market_cap_rank': 67,
@@ -1943,19 +1826,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.794547,
     'atl_change_percentage': 486.61194,
     'atl_date': '2019-01-30T00:00:00.000Z',
-    'roi': {
-      'times': 3.7707225358140817,
-      'currency': 'usd',
-      'percentage': 377.0722535814082
-    },
+    'roi': {'times': 3.7707225358140817, 'currency': 'usd', 'percentage': 377.0722535814082},
     'last_updated': '2022-07-07T20:02:58.365Z'
   },
   {
     'id': 'usdd',
     'symbol': 'usdd',
     'name': 'USDD',
-    'image':
-        'https://assets.coingecko.com/coins/images/25380/large/UUSD.jpg?1651823371',
+    'image': 'https://assets.coingecko.com/coins/images/25380/large/UUSD.jpg?1651823371',
     'current_price': 0.975026,
     'market_cap': 705611564,
     'market_cap_rank': 68,
@@ -1979,8 +1857,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'fantom',
     'symbol': 'ftm',
     'name': 'Fantom',
-    'image':
-        'https://assets.coingecko.com/coins/images/4001/large/Fantom.png?1558015016',
+    'image': 'https://assets.coingecko.com/coins/images/4001/large/Fantom.png?1558015016',
     'current_price': 0.276725,
     'market_cap': 704174432,
     'market_cap_rank': 70,
@@ -2001,19 +1878,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.00170176,
     'atl_change_percentage': 16183.63661,
     'atl_date': '2020-03-13T02:25:38.280Z',
-    'roi': {
-      'times': 8.377081966630046,
-      'currency': 'usd',
-      'percentage': 837.7081966630046
-    },
+    'roi': {'times': 8.377081966630046, 'currency': 'usd', 'percentage': 837.7081966630046},
     'last_updated': '2022-07-07T20:03:05.679Z'
   },
   {
     'id': 'klay-token',
     'symbol': 'klay',
     'name': 'Klaytn',
-    'image':
-        'https://assets.coingecko.com/coins/images/9672/large/klaytn.jpeg?1642775250',
+    'image': 'https://assets.coingecko.com/coins/images/9672/large/klaytn.jpeg?1642775250',
     'current_price': 0.239777,
     'market_cap': 699121148,
     'market_cap_rank': 69,
@@ -2037,8 +1909,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'basic-attention-token',
     'symbol': 'bat',
     'name': 'Basic Attention',
-    'image':
-        'https://assets.coingecko.com/coins/images/677/large/basic-attention-token.png?1547034427',
+    'image': 'https://assets.coingecko.com/coins/images/677/large/basic-attention-token.png?1547034427',
     'current_price': 0.447674,
     'market_cap': 671244027,
     'market_cap_rank': 71,
@@ -2059,19 +1930,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.063115,
     'atl_change_percentage': 610.54283,
     'atl_date': '2017-07-16T00:00:00.000Z',
-    'roi': {
-      'times': 1.3342354643073562,
-      'currency': 'eth',
-      'percentage': 133.42354643073563
-    },
+    'roi': {'times': 1.3342354643073562, 'currency': 'eth', 'percentage': 133.42354643073563},
     'last_updated': '2022-07-07T20:03:03.458Z'
   },
   {
     'id': 'compound-ether',
     'symbol': 'ceth',
     'name': 'cETH',
-    'image':
-        'https://assets.coingecko.com/coins/images/10643/large/ceth2.JPG?1581389598',
+    'image': 'https://assets.coingecko.com/coins/images/10643/large/ceth2.JPG?1581389598',
     'current_price': 24.69,
     'market_cap': 665945590,
     'market_cap_rank': 72,
@@ -2096,8 +1962,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'neo',
     'symbol': 'neo',
     'name': 'NEO',
-    'image':
-        'https://assets.coingecko.com/coins/images/480/large/NEO_512_512.png?1594357361',
+    'image': 'https://assets.coingecko.com/coins/images/480/large/NEO_512_512.png?1594357361',
     'current_price': 9.12,
     'market_cap': 644006512,
     'market_cap_rank': 73,
@@ -2116,19 +1981,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.071685,
     'atl_change_percentage': 12643.28922,
     'atl_date': '2016-10-21T00:00:00.000Z',
-    'roi': {
-      'times': 256.4779378956612,
-      'currency': 'usd',
-      'percentage': 25647.793789566123
-    },
+    'roi': {'times': 256.4779378956612, 'currency': 'usd', 'percentage': 25647.793789566123},
     'last_updated': '2022-07-07T20:03:07.801Z'
   },
   {
     'id': 'radix',
     'symbol': 'xrd',
     'name': 'Radix',
-    'image':
-        'https://assets.coingecko.com/coins/images/4374/large/Radix.png?1629701658',
+    'image': 'https://assets.coingecko.com/coins/images/4374/large/Radix.png?1629701658',
     'current_price': 0.064064,
     'market_cap': 636599737,
     'market_cap_rank': 74,
@@ -2155,8 +2015,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'havven',
     'symbol': 'snx',
     'name': 'Synthetix Network',
-    'image':
-        'https://assets.coingecko.com/coins/images/3406/large/SNX.png?1598631139',
+    'image': 'https://assets.coingecko.com/coins/images/3406/large/SNX.png?1598631139',
     'current_price': 2.7,
     'market_cap': 616861823,
     'market_cap_rank': 75,
@@ -2177,19 +2036,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.03046487,
     'atl_change_percentage': 8776.04248,
     'atl_date': '2019-01-11T00:00:00.000Z',
-    'roi': {
-      'times': 4.491810786617456,
-      'currency': 'usd',
-      'percentage': 449.1810786617456
-    },
+    'roi': {'times': 4.491810786617456, 'currency': 'usd', 'percentage': 449.1810786617456},
     'last_updated': '2022-07-07T20:02:12.535Z'
   },
   {
     'id': 'stepn',
     'symbol': 'gmt',
     'name': 'STEPN',
-    'image':
-        'https://assets.coingecko.com/coins/images/23597/large/gmt.png?1644658792',
+    'image': 'https://assets.coingecko.com/coins/images/23597/large/gmt.png?1644658792',
     'current_price': 1.021,
     'market_cap': 613006524,
     'market_cap_rank': 76,
@@ -2216,8 +2070,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'arweave',
     'symbol': 'ar',
     'name': 'Arweave',
-    'image':
-        'https://assets.coingecko.com/coins/images/4343/large/oRt6SiEN_400x400.jpg?1591059616',
+    'image': 'https://assets.coingecko.com/coins/images/4343/large/oRt6SiEN_400x400.jpg?1591059616',
     'current_price': 12,
     'market_cap': 601300430,
     'market_cap_rank': 77,
@@ -2238,19 +2091,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.271161,
     'atl_change_percentage': 4325.403,
     'atl_date': '2020-01-31T06:47:36.543Z',
-    'roi': {
-      'times': 15.479516335331825,
-      'currency': 'usd',
-      'percentage': 1547.9516335331825
-    },
+    'roi': {'times': 15.479516335331825, 'currency': 'usd', 'percentage': 1547.9516335331825},
     'last_updated': '2022-07-07T20:02:46.090Z'
   },
   {
     'id': 'zilliqa',
     'symbol': 'zil',
     'name': 'Zilliqa',
-    'image':
-        'https://assets.coingecko.com/coins/images/2687/large/Zilliqa-logo.png?1547036894',
+    'image': 'https://assets.coingecko.com/coins/images/2687/large/Zilliqa-logo.png?1547036894',
     'current_price': 0.04081828,
     'market_cap': 594100472,
     'market_cap_rank': 79,
@@ -2269,19 +2117,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.00214359,
     'atl_change_percentage': 1804.71915,
     'atl_date': '2020-03-13T02:22:55.161Z',
-    'roi': {
-      'times': 2.918886324015705,
-      'currency': 'eth',
-      'percentage': 291.8886324015705
-    },
+    'roi': {'times': 2.918886324015705, 'currency': 'eth', 'percentage': 291.8886324015705},
     'last_updated': '2022-07-07T20:02:49.055Z'
   },
   {
     'id': 'gatechain-token',
     'symbol': 'gt',
     'name': 'Gate',
-    'image':
-        'https://assets.coingecko.com/coins/images/8183/large/gt.png?1556085624',
+    'image': 'https://assets.coingecko.com/coins/images/8183/large/gt.png?1556085624',
     'current_price': 4,
     'market_cap': 593464475,
     'market_cap_rank': 78,
@@ -2306,8 +2149,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'pax-gold',
     'symbol': 'paxg',
     'name': 'PAX Gold',
-    'image':
-        'https://assets.coingecko.com/coins/images/9519/large/paxg.PNG?1568542565',
+    'image': 'https://assets.coingecko.com/coins/images/9519/large/paxg.PNG?1568542565',
     'current_price': 1711.35,
     'market_cap': 575787014,
     'market_cap_rank': 80,
@@ -2332,8 +2174,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'cdai',
     'symbol': 'cdai',
     'name': 'cDAI',
-    'image':
-        'https://assets.coingecko.com/coins/images/9281/large/cDAI.png?1576467585',
+    'image': 'https://assets.coingecko.com/coins/images/9281/large/cDAI.png?1576467585',
     'current_price': 0.02172549,
     'market_cap': 572826260,
     'market_cap_rank': 81,
@@ -2358,8 +2199,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'defichain',
     'symbol': 'dfi',
     'name': 'DeFiChain',
-    'image':
-        'https://assets.coingecko.com/coins/images/11757/large/symbol-defi-blockchain_200.png?1597306538',
+    'image': 'https://assets.coingecko.com/coins/images/11757/large/symbol-defi-blockchain_200.png?1597306538',
     'current_price': 1.022,
     'market_cap': 560366147,
     'market_cap_rank': 82,
@@ -2384,8 +2224,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'waves',
     'symbol': 'waves',
     'name': 'Waves',
-    'image':
-        'https://assets.coingecko.com/coins/images/425/large/waves.png?1548386117',
+    'image': 'https://assets.coingecko.com/coins/images/425/large/waves.png?1548386117',
     'current_price': 5.42,
     'market_cap': 542631709,
     'market_cap_rank': 83,
@@ -2404,19 +2243,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.116403,
     'atl_change_percentage': 4562.33026,
     'atl_date': '2016-08-02T00:00:00.000Z',
-    'roi': {
-      'times': 28.315587482872505,
-      'currency': 'usd',
-      'percentage': 2831.5587482872506
-    },
+    'roi': {'times': 28.315587482872505, 'currency': 'usd', 'percentage': 2831.5587482872506},
     'last_updated': '2022-07-07T20:02:49.362Z'
   },
   {
     'id': 'chiliz',
     'symbol': 'chz',
     'name': 'Chiliz',
-    'image':
-        'https://assets.coingecko.com/coins/images/8834/large/Chiliz.png?1561970540',
+    'image': 'https://assets.coingecko.com/coins/images/8834/large/Chiliz.png?1561970540',
     'current_price': 0.101326,
     'market_cap': 542029749,
     'market_cap_rank': 84,
@@ -2437,19 +2271,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.00375533,
     'atl_change_percentage': 2598.97039,
     'atl_date': '2019-09-28T00:00:00.000Z',
-    'roi': {
-      'times': 3.6821013869336774,
-      'currency': 'usd',
-      'percentage': 368.21013869336775
-    },
+    'roi': {'times': 3.6821013869336774, 'currency': 'usd', 'percentage': 368.21013869336775},
     'last_updated': '2022-07-07T20:02:52.992Z'
   },
   {
     'id': 'evmos',
     'symbol': 'evmos',
     'name': 'Evmos',
-    'image':
-        'https://assets.coingecko.com/coins/images/24023/large/evmos.png?1653958927',
+    'image': 'https://assets.coingecko.com/coins/images/24023/large/evmos.png?1653958927',
     'current_price': 2.64,
     'market_cap': 537035209,
     'market_cap_rank': 86,
@@ -2476,8 +2305,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'blockstack',
     'symbol': 'stx',
     'name': 'Stacks',
-    'image':
-        'https://assets.coingecko.com/coins/images/2069/large/Stacks_logo_full.png?1604112510',
+    'image': 'https://assets.coingecko.com/coins/images/2069/large/Stacks_logo_full.png?1604112510',
     'current_price': 0.405233,
     'market_cap': 535984730,
     'market_cap_rank': 85,
@@ -2498,19 +2326,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.04077225,
     'atl_change_percentage': 894.40176,
     'atl_date': '2020-03-13T02:29:26.415Z',
-    'roi': {
-      'times': 2.4329262622049317,
-      'currency': 'usd',
-      'percentage': 243.29262622049316
-    },
+    'roi': {'times': 2.4329262622049317, 'currency': 'usd', 'percentage': 243.29262622049316},
     'last_updated': '2022-07-07T20:02:26.711Z'
   },
   {
     'id': 'loopring',
     'symbol': 'lrc',
     'name': 'Loopring',
-    'image':
-        'https://assets.coingecko.com/coins/images/913/large/LRC.png?1572852344',
+    'image': 'https://assets.coingecko.com/coins/images/913/large/LRC.png?1572852344',
     'current_price': 0.413526,
     'market_cap': 515250458,
     'market_cap_rank': 87,
@@ -2531,19 +2354,14 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'atl': 0.01766498,
     'atl_change_percentage': 2245.40747,
     'atl_date': '2019-12-18T13:14:41.553Z',
-    'roi': {
-      'times': 6.00636773133077,
-      'currency': 'usd',
-      'percentage': 600.636773133077
-    },
+    'roi': {'times': 6.00636773133077, 'currency': 'usd', 'percentage': 600.636773133077},
     'last_updated': '2022-07-07T20:02:42.562Z'
   },
   {
     'id': 'enjincoin',
     'symbol': 'enj',
     'name': 'Enjin Coin',
-    'image':
-        'https://assets.coingecko.com/coins/images/1102/large/enjin-coin-logo.png?1547035078',
+    'image': 'https://assets.coingecko.com/coins/images/1102/large/enjin-coin-logo.png?1547035078',
     'current_price': 0.550811,
     'market_cap': 514798028,
     'market_cap_rank': 88,
@@ -2570,8 +2388,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'terrausd',
     'symbol': 'ustc',
     'name': 'TerraClassicUSD',
-    'image':
-        'https://assets.coingecko.com/coins/images/12681/large/UST.png?1653548090',
+    'image': 'https://assets.coingecko.com/coins/images/12681/large/UST.png?1653548090',
     'current_price': 0.05142,
     'market_cap': 505591516,
     'market_cap_rank': 89,
@@ -2596,8 +2413,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'bitdao',
     'symbol': 'bit',
     'name': 'BitDAO',
-    'image':
-        'https://assets.coingecko.com/coins/images/17627/large/rI_YptK8.png?1653983088',
+    'image': 'https://assets.coingecko.com/coins/images/17627/large/rI_YptK8.png?1653983088',
     'current_price': 0.446044,
     'market_cap': 500003091,
     'market_cap_rank': 90,
@@ -2624,8 +2440,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'dash',
     'symbol': 'dash',
     'name': 'Dash',
-    'image':
-        'https://assets.coingecko.com/coins/images/19/large/dash-logo.png?1548385930',
+    'image': 'https://assets.coingecko.com/coins/images/19/large/dash-logo.png?1548385930',
     'current_price': 45.45,
     'market_cap': 493493689,
     'market_cap_rank': 91,
@@ -2650,8 +2465,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'kusama',
     'symbol': 'ksm',
     'name': 'Kusama',
-    'image':
-        'https://assets.coingecko.com/coins/images/9568/large/m4zRhP5e_400x400.jpg?1576190080',
+    'image': 'https://assets.coingecko.com/coins/images/9568/large/m4zRhP5e_400x400.jpg?1576190080',
     'current_price': 52.16,
     'market_cap': 468427421,
     'market_cap_rank': 92,
@@ -2678,8 +2492,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'pancakeswap-token',
     'symbol': 'cake',
     'name': 'PancakeSwap',
-    'image':
-        'https://assets.coingecko.com/coins/images/12632/large/pancakeswap-cake-logo_%281%29.png?1629359065',
+    'image': 'https://assets.coingecko.com/coins/images/12632/large/pancakeswap-cake-logo_%281%29.png?1629359065',
     'current_price': 3.22,
     'market_cap': 466800075,
     'market_cap_rank': 93,
@@ -2706,8 +2519,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'amp-token',
     'symbol': 'amp',
     'name': 'Amp',
-    'image':
-        'https://assets.coingecko.com/coins/images/12409/large/amp-200x200.png?1599625397',
+    'image': 'https://assets.coingecko.com/coins/images/12409/large/amp-200x200.png?1599625397',
     'current_price': 0.00919493,
     'market_cap': 442075527,
     'market_cap_rank': 94,
@@ -2734,8 +2546,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'gala',
     'symbol': 'gala',
     'name': 'Gala',
-    'image':
-        'https://assets.coingecko.com/coins/images/12493/large/GALA-COINGECKO.png?1600233435',
+    'image': 'https://assets.coingecko.com/coins/images/12493/large/GALA-COINGECKO.png?1600233435',
     'current_price': 0.057007,
     'market_cap': 430101018,
     'market_cap_rank': 95,
@@ -2762,8 +2573,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'celo',
     'symbol': 'celo',
     'name': 'Celo',
-    'image':
-        'https://assets.coingecko.com/coins/images/11090/large/icon-celo-CELO-color-500.png?1592293590',
+    'image': 'https://assets.coingecko.com/coins/images/11090/large/icon-celo-CELO-color-500.png?1592293590',
     'current_price': 0.950493,
     'market_cap': 428550526,
     'market_cap_rank': 96,
@@ -2790,8 +2600,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'tether-gold',
     'symbol': 'xaut',
     'name': 'Tether Gold',
-    'image':
-        'https://assets.coingecko.com/coins/images/10481/large/tether-gold.png?1579946148',
+    'image': 'https://assets.coingecko.com/coins/images/10481/large/tether-gold.png?1579946148',
     'current_price': 1725.65,
     'market_cap': 425414146,
     'market_cap_rank': 97,
@@ -2816,8 +2625,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'kava',
     'symbol': 'kava',
     'name': 'Kava',
-    'image':
-        'https://assets.coingecko.com/coins/images/9761/large/kava.jpg?1639703080',
+    'image': 'https://assets.coingecko.com/coins/images/9761/large/kava.jpg?1639703080',
     'current_price': 1.87,
     'market_cap': 414375816,
     'market_cap_rank': 98,
@@ -2842,8 +2650,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'mina-protocol',
     'symbol': 'mina',
     'name': 'Mina Protocol',
-    'image':
-        'https://assets.coingecko.com/coins/images/15628/large/JM4_vQ34_400x400.png?1621394004',
+    'image': 'https://assets.coingecko.com/coins/images/15628/large/JM4_vQ34_400x400.png?1621394004',
     'current_price': 0.702369,
     'market_cap': 406395476,
     'market_cap_rank': 99,
@@ -2868,8 +2675,7 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
     'id': 'convex-finance',
     'symbol': 'cvx',
     'name': 'Convex Finance',
-    'image':
-        'https://assets.coingecko.com/coins/images/15585/large/convex.png?1621256328',
+    'image': 'https://assets.coingecko.com/coins/images/15585/large/convex.png?1621256328',
     'current_price': 6.24,
     'market_cap': 405812434,
     'market_cap_rank': 100,
@@ -2894,5 +2700,4 @@ const List<Map<String, Object>> rawSampleCurrencyList = [
   }
 ];
 
-final List<Currency> sampleCurrencyList =
-    rawSampleCurrencyList.map(Currency.fromJson).toList();
+final List<Currency> sampleCurrencyList = rawSampleCurrencyList.map(Currency.fromJson).toList();

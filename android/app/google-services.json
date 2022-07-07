@@ -31,10 +31,10 @@
               "client_type": 3
             },
             {
-              "client_id": "407972679260-h7vvsnuq4uke33gpsusg4502nksdp6f1.apps.googleusercontent.com",
+              "client_id": "407972679260-67bjpolaenskgr7tr8nrogjdenp69dq1.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "me.momar.t28"
+                "bundle_id": "com.example.verygoodcore.twentyEight"
               }
             }
           ]

@@ -62,12 +62,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBwSa3mGGM7iPBhP0G7vVTa4lStIOpArA4',
-    appId: '1:407972679260:ios:92f28d8c64d99979dde099',
+    appId: '1:407972679260:ios:37eab507cff6154ddde099',
     messagingSenderId: '407972679260',
     projectId: 'twenty-x-eight',
     storageBucket: 'twenty-x-eight.appspot.com',
-    iosClientId: '407972679260-o8mlso2ecj25a5rbpgokk85jv2tnedkr.apps.googleusercontent.com',
-    iosBundleId: 'me.momar.twenty-eight',
+    iosClientId: '407972679260-67bjpolaenskgr7tr8nrogjdenp69dq1.apps.googleusercontent.com',
+    iosBundleId: 'com.example.verygoodcore.twentyEight',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
