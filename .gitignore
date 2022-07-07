@@ -125,3 +125,7 @@ app.*.map.json
 !.idea/codeStyles/
 !.idea/dictionaries/
 !.idea/runConfigurations/
+firebase.json
+.gitignore
+.firebase/hosting.YnVpbGQvd2Vi.cache
+.firebaserc
