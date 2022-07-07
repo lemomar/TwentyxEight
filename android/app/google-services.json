@@ -29,6 +29,13 @@
             {
               "client_id": "407972679260-uvhnqqlr3quqev7aqf4rj1auh33vsv2n.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "407972679260-h7vvsnuq4uke33gpsusg4502nksdp6f1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "me.momar.t28"
+              }
             }
           ]
         }

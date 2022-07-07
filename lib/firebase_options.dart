@@ -36,7 +36,7 @@ class DefaultFirebaseOptions {
           'DefaultFirebaseOptions have not been configured for linux - '
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
-      case TargetPlatform.fuchsia:
+      default:
         throw UnsupportedError(
           'DefaultFirebaseOptions are not supported for this platform.',
         );
@@ -62,23 +62,21 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBwSa3mGGM7iPBhP0G7vVTa4lStIOpArA4',
-    appId: '1:407972679260:ios:5210ec904326a817dde099',
+    appId: '1:407972679260:ios:92f28d8c64d99979dde099',
     messagingSenderId: '407972679260',
     projectId: 'twenty-x-eight',
     storageBucket: 'twenty-x-eight.appspot.com',
-    iosClientId:
-        '407972679260-l73i4j6g942vdfqq51s3t0tg1od1u1l4.apps.googleusercontent.com',
-    iosBundleId: 'com.example.verygoodcore.twenty-eight',
+    iosClientId: '407972679260-o8mlso2ecj25a5rbpgokk85jv2tnedkr.apps.googleusercontent.com',
+    iosBundleId: 'me.momar.twenty-eight',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyBwSa3mGGM7iPBhP0G7vVTa4lStIOpArA4',
-    appId: '1:407972679260:ios:7ccf7c7a28b808f2dde099',
+    appId: '1:407972679260:ios:37eab507cff6154ddde099',
     messagingSenderId: '407972679260',
     projectId: 'twenty-x-eight',
     storageBucket: 'twenty-x-eight.appspot.com',
-    iosClientId:
-        '407972679260-h7vvsnuq4uke33gpsusg4502nksdp6f1.apps.googleusercontent.com',
-    iosBundleId: 'me.momar.t28',
+    iosClientId: '407972679260-67bjpolaenskgr7tr8nrogjdenp69dq1.apps.googleusercontent.com',
+    iosBundleId: 'com.example.verygoodcore.twentyEight',
   );
 }
